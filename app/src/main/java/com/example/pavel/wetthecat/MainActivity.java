@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    public ImageView click_img, cat_img;
+    public ImageView click_img, cat_img, dryer_img;
     public TextView condition;
 
     @Override
@@ -20,18 +21,38 @@ public class MainActivity extends AppCompatActivity {
 
         click_img = (ImageView)findViewById(R.id.imageView);
         cat_img = (ImageView)findViewById(R.id.imageView2);
+        dryer_img = (ImageView)findViewById(R.id.imageView3);
         condition = (TextView)findViewById(R.id.textView);
 
         click_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity activity = new MainActivity();
+
                 Bucket bucket = new Bucket();
                 Cat cat = new Cat();
+                Hairdryer hairdryer = new Hairdryer();
 
                 bucket.wetTheCat(cat);
-                cat.getCatCondition(cat, activity);
+                getCondition(cat);
+
+            }
+        });
+
+        dryer_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
+    public void getCondition(Cat cat){
+        if (cat.getCatCondition(cat)=="wet"){
+            cat_img.setImageResource(R.drawable.wet);
+            condition.setText(R.string.wet);
+        }else{
+            cat_img.setImageResource(R.drawable.dry);
+            condition.setText(R.string.dry);
+        }
+    }
+
 }
