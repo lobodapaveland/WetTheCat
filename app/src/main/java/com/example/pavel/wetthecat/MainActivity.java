@@ -41,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
         dryer_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Bucket bucket = new Bucket();
+                Cat cat = new Cat();
+                Hairdryer hairdryer = new Hairdryer();
 
+                hairdryer.dryTheCat(cat);
+                getCondition(cat);
             }
         });
     }
