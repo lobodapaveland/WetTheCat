@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WetTheCat</string>
+    <string name="wet">Wet</string>
+    <string name="dry">Dry</string>
+</resources>
